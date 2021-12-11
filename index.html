@@ -311,6 +311,23 @@
       </main>
     </div>
 
-    <script src="portfolio/script.js" />
+    <!-- <script src="portfolio/script.js" /> -->
+    <script>
+      const skills = document.getElementsByClassName("skill");
+
+      for (let i = 0; i < skills.length; ++i) {
+        const el = skills[i].firstElementChild;
+
+        const checkHeighAnim = () => {
+          let dist = el.getBoundingClientRect().top - window.innerHeight;
+          if (dist < 10) {
+            el.classList.add(`${skills[i].id}-skill`);
+            window.removeEventListener("scroll", checkHeighAnim);
+          }
+        };
+
+        window.addEventListener("scroll", checkHeighAnim);
+      }
+    </script>
   </body>
 </html>
